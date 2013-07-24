@@ -1,4 +1,9 @@
-responsive-masthead
-===================
+# Responsive Header
 
-A simple responsive header with multi-level dropdowns/toggles.
+This is a boilerplate responsive header based heavily on the work of [Brad Frost](http://codepen.io/bradfrost/full/qwJvF) and others. 
+
+## Expects
+
+ - jquery
+ - modernizer
+ - sass
