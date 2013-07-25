@@ -14,23 +14,40 @@ $masthead-menu-link-hover-color:$black-4;
 .masthead {
 	background-color:$masthead-background-color;
 	position:relative;
-	min-height:em(40);
+	min-height:em(60);
+
+	@include tablet-portrait-and-above {
+
+	}
 
 	.masthead__logo {
 		max-width:em(200);
 		margin:auto;
+		padding:em(10) 0;
 
 		a img {
 			display:block;
 		}
+
+		@include tablet-portrait-and-above {
+			margin:0;
+			max-width:em(250);
+		}
 	}
+
+
+
+}
+
+.menu {
+	position:relative;
 }
 
 .menu__link {
     position:absolute;
     display: block;
-    top:0;
-    left:0;
+    top:em(-50,12);
+    left:em(10,12);
 
     font-size:em(12);
     line-height: 1;
@@ -40,7 +57,7 @@ $masthead-menu-link-hover-color:$black-4;
     padding:em(14,12);
     background-color:$masthead-menu-button-color;
 
-    border-radius:em(6);
+    border-radius:em(6,12);
 }
 
 .menu__list, .menu__list > ul ul {
@@ -48,12 +65,14 @@ $masthead-menu-link-hover-color:$black-4;
 	@include transition(all 0.3s ease-out);
 }
 
-.js .menu__list, .js .menu__list > ul ul {
+.js .menu__list, 
+.js .menu__list > ul ul {
 	overflow: hidden;
 	max-height: 0;
 }
 
-.menu__list.active, .js .menu__list > ul ul.active {
+.menu__list.active, 
+.js .menu__list > ul ul.active {
 	max-height: 55em;
 }
 
@@ -107,61 +126,64 @@ $masthead-menu-link-hover-color:$black-4;
 }
 
 
-@media screen and (min-width: 48.25em) {
-	.pattern {
+@include tablet-portrait-and-above {
+	.menu {
 		overflow: visible;
 	}
-	a.menu__link {
+
+	.menu__link {
 	   display: none;
 	}
-	.js .menu__list, .js .menu__list > ul ul {
+
+	.js .menu__list, 
+	.js .menu__list > ul ul {
 		max-height: none;
 		overflow: visible;
 		background: none;
+
 	}
 	.js .menu__list > ul ul {
-		background: #808080;
+		background-color:$masthead-background-color;
 		display: none;
 	}
+
 	.js .menu__list > ul li:hover > ul {
 		display: block;
 	}
-	.menu__list ul {
-		margin: 0 0 0 -0.25em;
-		border: 0;
-	}
-	.menu__list li a {
-		border: 0;
-	}
-	.menu__list li.has-subnav > a {
-		padding-right: 2em;
-	}
-	.menu__list li.has-subnav > a:after {
-		content: ">";
-		font-size: 1em;
-		padding: 0.8em 0.5em;
-	}
-	.menu__list .level-1 > li.has-subnav > a:after {
-		content: "▼";
-	}
-	.menu__list > ul li {
-		margin: 0 0.25em;
-	}
-	.menu__list > ul > li {
-		display: inline-block;
-		position: relative;
-	}
-	.menu__list > ul ul {
-		position: absolute;
-		top: 0;
-		left: 12em;
-		width: 12em;
-	}
-	.menu__list > ul ul li {
-		position: relative;
-	}
-	.menu__list > ul ul.level-2 {
-		top: 3em;
+
+	.menu__list {
+		position:absolute;
+		bottom:0;
+		right:0;
+
+		ul {
+			border: 0;
+		}
+
+		li.has-subnav > a:after {
+			content: none;
+		}
+
+		> ul > li {
+			display: inline-block;
+			position: relative;
+			> a { border-bottom:0; }
+		}
+
+		> ul ul {
+			position: absolute;
+			top: 0;
+			left: em(200,16);
+			width: em(200,16);
+		}
+		
+		> ul ul li {
+			position: relative;
+		}
+
+		> ul ul.level-2 {
+		top: em(44);
 		left: 0;
+		}
 	}
 }

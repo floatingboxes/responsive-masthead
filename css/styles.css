@@ -5,18 +5,26 @@
 .masthead {
   background-color: #2f3338;
   position: relative;
-  min-height: 2.5em; }
+  min-height: 3.75em; }
   .masthead .masthead__logo {
     max-width: 12.5em;
-    margin: auto; }
+    margin: auto;
+    padding: 0.625em 0; }
     .masthead .masthead__logo a img {
       display: block; }
+    @media only screen and (min-width: 48em) {
+      .masthead .masthead__logo {
+        margin: 0;
+        max-width: 15.625em; } }
+
+.menu {
+  position: relative; }
 
 .menu__link {
   position: absolute;
   display: block;
-  top: 0;
-  left: 0;
+  top: -4.16667em;
+  left: 0.83333em;
   font-size: 0.75em;
   line-height: 1;
   text-transform: uppercase;
@@ -24,7 +32,7 @@
   color: white;
   padding: 1.16667em;
   background-color: #3e4349;
-  border-radius: 0.375em; }
+  border-radius: 0.5em; }
 
 .menu__list, .menu__list > ul ul {
   clear: both;
@@ -34,11 +42,13 @@
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out; }
 
-.js .menu__list, .js .menu__list > ul ul {
+.js .menu__list,
+.js .menu__list > ul ul {
   overflow: hidden;
   max-height: 0; }
 
-.menu__list.active, .js .menu__list > ul ul.active {
+.menu__list.active,
+.js .menu__list > ul ul.active {
   max-height: 55em; }
 
 .menu__list ul {
@@ -73,61 +83,48 @@
 .menu__list li.has-subnav > a.active:after {
   content: "-"; }
 
-@media screen and (min-width: 48.25em) {
-  .pattern {
+@media only screen and (min-width: 48em) {
+  .menu {
     overflow: visible; }
 
-  a.menu__link {
+  .menu__link {
     display: none; }
 
-  .js .menu__list, .js .menu__list > ul ul {
+  .js .menu__list,
+  .js .menu__list > ul ul {
     max-height: none;
     overflow: visible;
     background: none; }
 
   .js .menu__list > ul ul {
-    background: #808080;
+    background-color: #2f3338;
     display: none; }
 
   .js .menu__list > ul li:hover > ul {
     display: block; }
 
-  .menu__list ul {
-    margin: 0 0 0 -0.25em;
-    border: 0; }
-
-  .menu__list li a {
-    border: 0; }
-
-  .menu__list li.has-subnav > a {
-    padding-right: 2em; }
-
-  .menu__list li.has-subnav > a:after {
-    content: ">";
-    font-size: 1em;
-    padding: 0.8em 0.5em; }
-
-  .menu__list .level-1 > li.has-subnav > a:after {
-    content: "▼"; }
-
-  .menu__list > ul li {
-    margin: 0 0.25em; }
-
-  .menu__list > ul > li {
-    display: inline-block;
-    position: relative; }
-
-  .menu__list > ul ul {
+  .menu__list {
     position: absolute;
-    top: 0;
-    left: 12em;
-    width: 12em; }
-
-  .menu__list > ul ul li {
-    position: relative; }
-
-  .menu__list > ul ul.level-2 {
-    top: 3em;
-    left: 0; } }
+    bottom: 0;
+    right: 0; }
+    .menu__list ul {
+      border: 0; }
+    .menu__list li.has-subnav > a:after {
+      content: none; }
+    .menu__list > ul > li {
+      display: inline-block;
+      position: relative; }
+      .menu__list > ul > li > a {
+        border-bottom: 0; }
+    .menu__list > ul ul {
+      position: absolute;
+      top: 0;
+      left: 12.5em;
+      width: 12.5em; }
+    .menu__list > ul ul li {
+      position: relative; }
+    .menu__list > ul ul.level-2 {
+      top: 2.75em;
+      left: 0; } }
 img {
   max-width: 100%; }

@@ -4,10 +4,11 @@ This is a boilerplate responsive header based heavily on the work of [Brad Frost
 
 ## Expects
 
- - jquery
- - modernizer
- - sass
- - bourbon
+ - [jQuery](http://jquery.com/)
+ - [Modernizer](http://modernizr.com/)
+ - [Sass](http://sass-lang.com/)
+ - [Bourbon](http://bourbon.io/)
+ - [_media-queries.scss](https://gist.github.com/floatingboxes/5051820#file-_media-queries-scss)
 
 
  ## Credits
