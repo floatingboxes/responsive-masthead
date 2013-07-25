@@ -2,6 +2,12 @@
   max-width: 600px;
   margin: 50px auto; }
 
+.masthead {
+  background-color: #3e4349; }
+  .masthead .masthead__logo {
+    margin: auto;
+    background-color: red; }
+
 a.menu-link {
   float: right;
   display: block;

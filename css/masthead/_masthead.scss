@@ -1,3 +1,20 @@
+$black-1: #202226;
+$black-2: #2F3338;
+$black-3: #3E4349;
+$black-4: #4E535B;
+$black-5: #5D646D;
+
+$masthead-background-color:$black-3;
+
+.masthead {
+	background-color:$masthead-background-color;
+
+	.masthead__logo {
+		margin:auto;
+		background-color:red;
+	}
+}
+
 a.menu-link {
     float: right;
     display: block;
