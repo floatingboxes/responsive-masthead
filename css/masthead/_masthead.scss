@@ -3,60 +3,107 @@ $black-2: #2F3338;
 $black-3: #3E4349;
 $black-4: #4E535B;
 $black-5: #5D646D;
+$white: #FFFFFF;
 
-$masthead-background-color:$black-3;
+$masthead-text-color:$white;
+$masthead-background-color:$black-2;
+$masthead-delimiter-color:$black-4;
+$masthead-menu-button-color:$black-3;
+$masthead-menu-link-hover-color:$black-4;
 
 .masthead {
 	background-color:$masthead-background-color;
+	position:relative;
+	min-height:em(40);
 
 	.masthead__logo {
+		max-width:em(200);
 		margin:auto;
-		background-color:red;
+
+		a img {
+			display:block;
+		}
 	}
 }
 
-a.menu-link {
-    float: right;
+.menu__link {
+    position:absolute;
     display: block;
-    padding: 1em;
+    top:0;
+    left:0;
+
+    font-size:em(12);
+    line-height: 1;
+    text-transform:uppercase;
+    text-decoration: none;
+    color:$masthead-text-color;
+    padding:em(14,12);
+    background-color:$masthead-menu-button-color;
+
+    border-radius:em(6);
 }
-.menu, .menu > ul ul {
+
+.menu__list, .menu__list > ul ul {
 	clear: both;
-	-webkit-transition: all 0.3s ease-out;  
-	-moz-transition: all 0.3s ease-out;
-	-ms-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
+	@include transition(all 0.3s ease-out);
 }
-.js .menu, .js .menu > ul ul {
+
+.js .menu__list, .js .menu__list > ul ul {
 	overflow: hidden;
 	max-height: 0;
-	background: rgba(0,0,0,0.1);
 }
-.menu.active, .js .menu > ul ul.active {
+
+.menu__list.active, .js .menu__list > ul ul.active {
 	max-height: 55em;
 }
-.menu > ul {
-	border-top: 1px solid #808080;
-}
-.menu li a {
-	color: #000;
-	display: block;
-	padding: 0.8em;
-	border-bottom: 1px solid #808080;
-	position: relative;
-}
-.menu li.has-subnav > a:after {
-	content: '+';
-	position: absolute;
-	top: 0;
-	right: 0;
-	display: block;
-	font-size: 1.5em;
-	padding: 0.25em 0.5em;
-}
-.menu li.has-subnav > a.active:after {
-	content: "-";
+
+.menu__list {
+	ul {
+		margin:0;
+		padding:0;
+	}
+
+	> ul {
+		border-top: 1px solid $masthead-delimiter-color; 
+	}
+
+	> ul ul {
+		background-color:rgba(255,255,255,0.05);
+	}
+
+	li a {
+		color: $masthead-text-color;
+		display: block;
+
+		font-size: em(14);
+		line-height:1;
+		padding: em(15,14);
+		margin:0;
+		text-transform:uppercase;
+		text-decoration:none;
+		letter-spacing: em(2);
+
+		border-bottom: 1px solid $masthead-delimiter-color;
+		position: relative;
+	}
+
+	li a:hover {
+		background-color:$masthead-menu-link-hover-color;
+	}
+
+	li.has-subnav > a:after {
+		content: '+';
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		font-size: em(22,14);
+		padding: em(11,22);
+	}
+
+	li.has-subnav > a.active:after {
+		content: "-";
+	}
 }
 
 
@@ -64,56 +111,56 @@ a.menu-link {
 	.pattern {
 		overflow: visible;
 	}
-	a.menu-link {
+	a.menu__link {
 	   display: none;
 	}
-	.js .menu, .js .menu > ul ul {
+	.js .menu__list, .js .menu__list > ul ul {
 		max-height: none;
 		overflow: visible;
 		background: none;
 	}
-	.js .menu > ul ul {
+	.js .menu__list > ul ul {
 		background: #808080;
 		display: none;
 	}
-	.js .menu > ul li:hover > ul {
+	.js .menu__list > ul li:hover > ul {
 		display: block;
 	}
-	.menu ul {
+	.menu__list ul {
 		margin: 0 0 0 -0.25em;
 		border: 0;
 	}
-	.menu li a {
+	.menu__list li a {
 		border: 0;
 	}
-	.menu li.has-subnav > a {
+	.menu__list li.has-subnav > a {
 		padding-right: 2em;
 	}
-	.menu li.has-subnav > a:after {
+	.menu__list li.has-subnav > a:after {
 		content: ">";
 		font-size: 1em;
 		padding: 0.8em 0.5em;
 	}
-	.menu .level-1 > li.has-subnav > a:after {
+	.menu__list .level-1 > li.has-subnav > a:after {
 		content: "▼";
 	}
-	.menu > ul li {
+	.menu__list > ul li {
 		margin: 0 0.25em;
 	}
-	.menu > ul > li {
+	.menu__list > ul > li {
 		display: inline-block;
 		position: relative;
 	}
-	.menu > ul ul {
+	.menu__list > ul ul {
 		position: absolute;
 		top: 0;
 		left: 12em;
 		width: 12em;
 	}
-	.menu > ul ul li {
+	.menu__list > ul ul li {
 		position: relative;
 	}
-	.menu > ul ul.level-2 {
+	.menu__list > ul ul.level-2 {
 		top: 3em;
 		left: 0;
 	}

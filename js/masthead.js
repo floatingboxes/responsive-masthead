@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	// $('body').addClass('js'); Modernizer will add the js class
-	var $menu = $('#menu'),
-		$menulink = $('.menu-link'),
+	var $menu = $('#menu__list'),
+		$menulink = $('.menu__link'),
 		$menuTrigger = $('.has-subnav > a');
 
 	$menulink.click(function(e) {

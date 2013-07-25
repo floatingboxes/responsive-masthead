@@ -3,17 +3,30 @@
   margin: 50px auto; }
 
 .masthead {
-  background-color: #3e4349; }
+  background-color: #2f3338;
+  position: relative;
+  min-height: 2.5em; }
   .masthead .masthead__logo {
-    margin: auto;
-    background-color: red; }
+    max-width: 12.5em;
+    margin: auto; }
+    .masthead .masthead__logo a img {
+      display: block; }
 
-a.menu-link {
-  float: right;
+.menu__link {
+  position: absolute;
   display: block;
-  padding: 1em; }
+  top: 0;
+  left: 0;
+  font-size: 0.75em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  padding: 1.16667em;
+  background-color: #3e4349;
+  border-radius: 0.375em; }
 
-.menu, .menu > ul ul {
+.menu__list, .menu__list > ul ul {
   clear: both;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -21,89 +34,100 @@ a.menu-link {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out; }
 
-.js .menu, .js .menu > ul ul {
+.js .menu__list, .js .menu__list > ul ul {
   overflow: hidden;
-  max-height: 0;
-  background: rgba(0, 0, 0, 0.1); }
+  max-height: 0; }
 
-.menu.active, .js .menu > ul ul.active {
+.menu__list.active, .js .menu__list > ul ul.active {
   max-height: 55em; }
 
-.menu > ul {
-  border-top: 1px solid gray; }
-
-.menu li a {
-  color: #000;
+.menu__list ul {
+  margin: 0;
+  padding: 0; }
+.menu__list > ul {
+  border-top: 1px solid #4e535b; }
+.menu__list > ul ul {
+  background-color: rgba(255, 255, 255, 0.05); }
+.menu__list li a {
+  color: white;
   display: block;
-  padding: 0.8em;
-  border-bottom: 1px solid gray;
+  font-size: 0.875em;
+  line-height: 1;
+  padding: 1.07143em;
+  margin: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.125em;
+  border-bottom: 1px solid #4e535b;
   position: relative; }
-
-.menu li.has-subnav > a:after {
+.menu__list li a:hover {
+  background-color: #4e535b; }
+.menu__list li.has-subnav > a:after {
   content: '+';
   position: absolute;
   top: 0;
   right: 0;
   display: block;
-  font-size: 1.5em;
-  padding: 0.25em 0.5em; }
-
-.menu li.has-subnav > a.active:after {
+  font-size: 1.57143em;
+  padding: 0.5em; }
+.menu__list li.has-subnav > a.active:after {
   content: "-"; }
 
 @media screen and (min-width: 48.25em) {
   .pattern {
     overflow: visible; }
 
-  a.menu-link {
+  a.menu__link {
     display: none; }
 
-  .js .menu, .js .menu > ul ul {
+  .js .menu__list, .js .menu__list > ul ul {
     max-height: none;
     overflow: visible;
     background: none; }
 
-  .js .menu > ul ul {
+  .js .menu__list > ul ul {
     background: #808080;
     display: none; }
 
-  .js .menu > ul li:hover > ul {
+  .js .menu__list > ul li:hover > ul {
     display: block; }
 
-  .menu ul {
+  .menu__list ul {
     margin: 0 0 0 -0.25em;
     border: 0; }
 
-  .menu li a {
+  .menu__list li a {
     border: 0; }
 
-  .menu li.has-subnav > a {
+  .menu__list li.has-subnav > a {
     padding-right: 2em; }
 
-  .menu li.has-subnav > a:after {
+  .menu__list li.has-subnav > a:after {
     content: ">";
     font-size: 1em;
     padding: 0.8em 0.5em; }
 
-  .menu .level-1 > li.has-subnav > a:after {
+  .menu__list .level-1 > li.has-subnav > a:after {
     content: "▼"; }
 
-  .menu > ul li {
+  .menu__list > ul li {
     margin: 0 0.25em; }
 
-  .menu > ul > li {
+  .menu__list > ul > li {
     display: inline-block;
     position: relative; }
 
-  .menu > ul ul {
+  .menu__list > ul ul {
     position: absolute;
     top: 0;
     left: 12em;
     width: 12em; }
 
-  .menu > ul ul li {
+  .menu__list > ul ul li {
     position: relative; }
 
-  .menu > ul ul.level-2 {
+  .menu__list > ul ul.level-2 {
     top: 3em;
     left: 0; } }
+img {
+  max-width: 100%; }
