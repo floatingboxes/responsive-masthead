@@ -2,6 +2,9 @@
 
 This is a boilerplate responsive header based heavily on the work of [Brad Frost](http://codepen.io/bradfrost/full/qwJvF) and others. 
 
+## Demo
+
+ - [Demo](http://floatingboxes.github.io/responsive-masthead)
 
 
 ## Expects
