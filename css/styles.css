@@ -124,6 +124,7 @@
     .menu__list > ul ul li {
       position: relative; }
     .menu__list > ul ul.level-2 {
+      z-index: 9999;
       top: 2.75em;
       left: 0; } }
 img {

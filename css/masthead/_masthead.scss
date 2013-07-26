@@ -182,8 +182,9 @@ $masthead-menu-link-hover-color:$black-4;
 		}
 
 		> ul ul.level-2 {
-		top: em(44);
-		left: 0;
+			z-index:9999;
+			top: em(44);
+			left: 0;
 		}
 	}
 }
