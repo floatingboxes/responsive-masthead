@@ -16,10 +16,6 @@ $masthead-menu-link-hover-color:$black-4;
 	position:relative;
 	min-height:em(60);
 
-	@include tablet-portrait-and-above {
-
-	}
-
 	.masthead__logo {
 		max-width:em(200);
 		margin:auto;
@@ -34,25 +30,22 @@ $masthead-menu-link-hover-color:$black-4;
 			max-width:em(250);
 		}
 	}
-
-
-
 }
 
-.menu {
+.masthead__navigation {
 	position:relative;
 }
 
 .menu__link {
     position:absolute;
-    display: block;
+    display:block;
     top:em(-50,12);
     left:em(10,12);
 
     font-size:em(12);
-    line-height: 1;
+    line-height:1;
     text-transform:uppercase;
-    text-decoration: none;
+    text-decoration:none;
     color:$masthead-text-color;
     padding:em(14,12);
     background-color:$masthead-menu-button-color;
@@ -60,23 +53,29 @@ $masthead-menu-link-hover-color:$black-4;
     border-radius:em(6,12);
 }
 
-.menu__list, .menu__list > ul ul {
+.menu, .menu > ul ul {
 	clear: both;
-	@include transition(all 0.3s ease-out);
+	@include transition(all 0.3s ease-in-out);
 }
 
-.js .menu__list, 
-.js .menu__list > ul ul {
+.menu > ul ul {
+	display:none;
+}
+
+
+.js .menu, 
+.js .menu > ul ul {
+	display:block;
 	overflow: hidden;
 	max-height: 0;
 }
 
-.menu__list.active, 
-.js .menu__list > ul ul.active {
+.menu.active, 
+.js .menu > ul ul.active {
 	max-height: 55em;
 }
 
-.menu__list {
+.menu {
 	ul {
 		margin:0;
 		padding:0;
@@ -88,6 +87,10 @@ $masthead-menu-link-hover-color:$black-4;
 
 	> ul ul {
 		background-color:rgba(255,255,255,0.05);
+	}
+
+	li {
+		position:relative;
 	}
 
 	li a {
@@ -110,18 +113,15 @@ $masthead-menu-link-hover-color:$black-4;
 		background-color:$masthead-menu-link-hover-color;
 	}
 
-	li.has-subnav > a:after {
-		content: '+';
-		position: absolute;
-		top: 0;
-		right: 0;
-		display: block;
-		font-size: em(22,14);
-		padding: em(11,22);
-	}
+	.disclosure {
+		position:absolute;
+		top:0;
+		right:0;
+		width:em(60);
+		text-align:center;
+		border-left:1px solid $masthead-delimiter-color;
+		z-index:9999;
 
-	li.has-subnav > a.active:after {
-		content: "-";
 	}
 }
 
@@ -135,23 +135,23 @@ $masthead-menu-link-hover-color:$black-4;
 	   display: none;
 	}
 
-	.js .menu__list, 
-	.js .menu__list > ul ul {
+	.js .menu, 
+	.js .menu > ul ul {
 		max-height: none;
 		overflow: visible;
 		background: none;
 
 	}
-	.js .menu__list > ul ul {
+	.js .menu > ul ul {
 		background-color:$masthead-background-color;
 		display: none;
 	}
 
-	.js .menu__list > ul li:hover > ul {
+	.js .menu > ul li:hover > ul {
 		display: block;
 	}
 
-	.menu__list {
+	.menu {
 		position:absolute;
 		bottom:0;
 		right:0;
@@ -186,9 +186,15 @@ $masthead-menu-link-hover-color:$black-4;
 		}
 
 		> ul ul.level-2 {
-			z-index:9999;
+			z-index:9998;
 			top: em(44);
 			left: 0;
 		}
+
+		.disclosure {
+			display:none;
+		}
 	}
+
+
 }
