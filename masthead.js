@@ -1,8 +1,7 @@
 $(document).ready(function() {
 	// $('body').addClass('js'); Modernizer will add the js class
-	var $menu = $('#menu__list'),
-		$menulink = $('.menu__link'),
-		$menuTrigger = $('.has-subnav > a');
+	var $menu = $('#menu'),
+		$menulink = $('.menu__link');
 
 	$menulink.click(function(e) {
 		e.preventDefault();
@@ -10,9 +9,24 @@ $(document).ready(function() {
 		$menu.toggleClass('active');
 	});
 
-	$menuTrigger.click(function(e) {
+
+	var $dropdownLink = $('.has-subnav > a'),
+		$disclosureLink = "<a class=\"disclosure\" href=\"#\">+</a>";
+
+	$dropdownLink.after($disclosureLink);
+
+	var $disclosure = $('.disclosure');
+
+	$disclosure.click(function(e) {
 		e.preventDefault();
 		var $this = $(this);
-		$this.toggleClass('active').next('ul').toggleClass('active');
+		$this.toggleClass('active').nextAll('ul').toggleClass('active');
+
+		if ($this.html()=="+") {
+			$this.html('–');
+		}else{
+			$this.html('+');
+		};
 	});
+
 });
