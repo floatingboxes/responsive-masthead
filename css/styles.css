@@ -111,6 +111,8 @@
       border: 0; }
     .menu__list li.has-subnav > a:after {
       content: none; }
+    .menu__list li:last-child a {
+      border-bottom: none; }
     .menu__list > ul > li {
       display: inline-block;
       position: relative; }

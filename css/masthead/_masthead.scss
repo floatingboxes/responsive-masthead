@@ -164,6 +164,10 @@ $masthead-menu-link-hover-color:$black-4;
 			content: none;
 		}
 
+		li:last-child a {
+			border-bottom: none;
+		}
+
 		> ul > li {
 			display: inline-block;
 			position: relative;
