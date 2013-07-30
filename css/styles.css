@@ -113,8 +113,6 @@
     right: 0; }
     .menu ul {
       border: 0; }
-    .menu li.has-subnav > a:after {
-      content: none; }
     .menu li:last-child a {
       border-bottom: none; }
     .menu > ul > li {
@@ -127,6 +125,10 @@
       top: 0;
       left: 12.5em;
       width: 12.5em; }
+    .menu .edge {
+      border: 1px solid red; }
+      .menu .edge > ul {
+        left: -0.625em; }
     .menu > ul ul li {
       position: relative; }
     .menu > ul ul.level-2 {

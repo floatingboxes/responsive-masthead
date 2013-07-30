@@ -149,6 +149,7 @@ $masthead-menu-link-hover-color:$black-4;
 
 	.js .menu > ul li:hover > ul {
 		display: block;
+		
 	}
 
 	.menu {
@@ -158,10 +159,6 @@ $masthead-menu-link-hover-color:$black-4;
 
 		ul {
 			border: 0;
-		}
-
-		li.has-subnav > a:after {
-			content: none;
 		}
 
 		li:last-child a {
@@ -180,6 +177,14 @@ $masthead-menu-link-hover-color:$black-4;
 			left: em(200,16);
 			width: em(200,16);
 		}
+
+		.edge {
+			border:1px solid red;
+			> ul {
+				left:em(-10,16);
+			}
+		}
+
 		
 		> ul ul li {
 			position: relative;
@@ -194,6 +199,8 @@ $masthead-menu-link-hover-color:$black-4;
 		.disclosure {
 			display:none;
 		}
+
+
 	}
 
 

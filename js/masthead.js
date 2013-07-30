@@ -29,4 +29,20 @@ $(document).ready(function() {
 		};
 	});
 
+	$(".has-subnav").on('mouseenter mouseleave', function (e) {
+	    var elm = $('ul:first', this);
+	    var off = elm .offset();
+	    var l = off.left;
+	    var w = elm.width();
+	    var docW = $("html").width();
+
+	    var isEntirelyVisible = (l+ w <= docW);
+
+	    if ( ! isEntirelyVisible ) {
+	        $(this).addClass('edge');
+	    } else {
+	        $(this).removeClass('edge');
+	    }
+	});
+
 });
