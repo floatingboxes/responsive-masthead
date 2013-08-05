@@ -126,8 +126,9 @@
       width: 12.5em; }
       .menu > ul ul li {
         position: relative; }
-    .menu .edge {
-      border: 1px solid red; }
+    .menu .edge > ul {
+      left: auto !important;
+      right: 0 !important; }
     .menu > ul ul.level-2 {
       z-index: 9998;
       top: 2.75em;

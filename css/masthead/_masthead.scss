@@ -242,10 +242,10 @@ $masthead-menu-link-hover-color:$black-4;
 
 		// Links that have a child dropdown going off the screen
 		.edge {
-			border:1px solid red;
 
 			> ul {
-				//left:em(-10,16);
+				left:auto !important;
+				right:0 !important;
 			}
 		}
 
