@@ -1,5 +1,6 @@
+
 $(document).ready(function() {
-	// $('body').addClass('js'); Modernizer will add the js class
+
 	var $menu = $('#menu'),
 		$menulink = $('.menu__link'),
 		$masthead = $('.masthead');
@@ -38,8 +39,8 @@ $(document).ready(function() {
 		};
 	});
 
+
 	$(document).scroll(function() {
-		//$("html").css("color", "#FF0000");
 
 		var scrollTop = $(window).scrollTop();
 
@@ -53,6 +54,7 @@ $(document).ready(function() {
 			$('.menu__link').toggleClass('active');
 			$('#menu').toggleClass('active');
 			$('.masthead').toggleClass('menu-is-open');
+			$('.masthead').css("top", scrollTop);
 		}
 	});
 
