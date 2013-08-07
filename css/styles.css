@@ -3,9 +3,11 @@
   margin: 50px auto; }
 
 .masthead {
-  position: relative;
+  position: absolute;
   min-height: 3.75em;
-  background-color: #2f3338; }
+  background-color: #2f3338;
+  top: 0;
+  width: 100%; }
   .masthead .masthead__logo {
     max-width: 12.5em;
     margin: 0;

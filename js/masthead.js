@@ -1,12 +1,21 @@
 $(document).ready(function() {
 	// $('body').addClass('js'); Modernizer will add the js class
 	var $menu = $('#menu'),
-		$menulink = $('.menu__link');
+		$menulink = $('.menu__link'),
+		$masthead = $('.masthead');
 
 	$menulink.click(function(e) {
 		e.preventDefault();
 		$menulink.toggleClass('active');
 		$menu.toggleClass('active');
+		$masthead.toggleClass('menu-is-open');
+
+
+		//TODO: This is so very not dry
+		if ($('.menu-is-open').length == 0) { 
+			var scrollTop = $(window).scrollTop();
+			$masthead.css("top", scrollTop);
+		}
 	});
 
 
@@ -29,6 +38,27 @@ $(document).ready(function() {
 		};
 	});
 
+	$(document).scroll(function() {
+		//$("html").css("color", "#FF0000");
+
+		var scrollTop = $(window).scrollTop();
+
+		if ($('.menu-is-open').length == 0) { 
+			$('.masthead').css("top", scrollTop);
+		}
+	
+		var menuTop = parseInt($('.masthead').css("top"), 10);
+
+		if (scrollTop < menuTop) {
+			$('.menu__link').toggleClass('active');
+			$('#menu').toggleClass('active');
+			$('.masthead').toggleClass('menu-is-open');
+		}
+	});
+
+
+	// Detects if a dropdown menu is going to go off the screen
+
 	$(".has-subnav").on('mouseenter mouseleave', function (e) {
 	    var elm = $('ul:first', this);
 	    var off = elm .offset();
@@ -46,3 +76,4 @@ $(document).ready(function() {
 	});
 
 });
+

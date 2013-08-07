@@ -22,9 +22,11 @@ $masthead-menu-link-hover-color:$black-4;
 
 // containing block for the entire masthead
 .masthead {
-	position: relative;
+	position: absolute;
 	min-height: em(60);
 	background-color: $masthead-background-color;
+	top:0;
+	width:100%;
 
 	// mobile-first positioning for the logo
 	.masthead__logo {
