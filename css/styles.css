@@ -8,13 +8,12 @@
   background-color: #2f3338; }
   .masthead .masthead__logo {
     max-width: 12.5em;
-    margin: auto;
+    margin: 0;
     padding: 0.625em 0; }
     .masthead .masthead__logo a img {
       display: block; }
     @media only screen and (min-width: 48em) {
       .masthead .masthead__logo {
-        margin: 0;
         max-width: 15.625em; } }
 
 .masthead__navigation {
@@ -24,7 +23,7 @@
   position: absolute;
   display: block;
   top: -4.16667em;
-  left: 0.83333em;
+  right: 0.83333em;
   font-size: 0.75em;
   line-height: 1;
   text-transform: uppercase;
@@ -126,9 +125,6 @@
       width: 12.5em; }
       .menu > ul ul li {
         position: relative; }
-    .menu .edge > ul {
-      left: auto !important;
-      right: 0 !important; }
     .menu > ul ul.level-2 {
       z-index: 9998;
       top: 2.75em;

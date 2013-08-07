@@ -29,7 +29,7 @@ $masthead-menu-link-hover-color:$black-4;
 	// mobile-first positioning for the logo
 	.masthead__logo {
 		max-width:em(200);
-		margin:auto;
+		margin:0;
 		padding:em(10) 0;
 
 		// removes excess space below image
@@ -39,7 +39,6 @@ $masthead-menu-link-hover-color:$black-4;
 
 		// tablet+ media query positioning for the logo
 		@include tablet-portrait-and-above {
-			margin:0;
 			max-width:em(250);
 		}
 	}
@@ -57,7 +56,7 @@ $masthead-menu-link-hover-color:$black-4;
     position:absolute;
     display:block;
     top:em(-50,12);
-    left:em(10,12);
+    right:em(10,12);
 
     font-size:em(12);
     line-height:1;
@@ -75,7 +74,6 @@ $masthead-menu-link-hover-color:$black-4;
 // max hieght 0 to max height 55em, animate that transition
 .menu,
 .menu > ul ul {
-//	clear: both;
 	@include transition(all 0.3s ease-in-out);
 }
 
@@ -244,8 +242,8 @@ $masthead-menu-link-hover-color:$black-4;
 		.edge {
 
 			> ul {
-				left:auto !important;
-				right:0 !important;
+				//left:auto !important;
+				//right:0 !important;
 			}
 		}
 
