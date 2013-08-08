@@ -1,68 +1,83 @@
 
 $(document).ready(function() {
 
-	var $menu = $('#menu'),
-		$menulink = $('.menu__link'),
-		$masthead = $('.masthead');
+	createDisclosureButtons();
 
-	$menulink.click(function(e) {
+
+	$('.menu__link').click(function(e) {
 		e.preventDefault();
-		$menulink.toggleClass('active');
-		$menu.toggleClass('active');
-		$masthead.toggleClass('menu-is-open');
-
-
-		//TODO: This is so very not dry
-		if ($('.menu-is-open').length == 0) { 
-			var scrollTop = $(window).scrollTop();
-			$masthead.css("top", scrollTop);
-		}
+		toggleMenu();
 	});
+	
 
-
-	var $dropdownLink = $('.has-subnav > a'),
-		$disclosureLink = "<a class=\"disclosure\" href=\"#\">+</a>";
-
-	$dropdownLink.after($disclosureLink);
-
-	var $disclosure = $('.disclosure');
-
-	$disclosure.click(function(e) {
+	$('.disclosure-button').click(function(e) {
 		e.preventDefault();
-		var $this = $(this);
-		$this.toggleClass('active').nextAll('ul').toggleClass('active');
-
-		if ($this.html()=="+") {
-			$this.html('–');
-		}else{
-			$this.html('+');
-		};
+		$(this).nextAll('ul').toggleClass('active');
+		toggleDisclosureButtonIcon($(this));
 	});
 
 
 	$(document).scroll(function() {
-
-		var scrollTop = $(window).scrollTop();
-
-		if ($('.menu-is-open').length == 0) { 
-			$('.masthead').css("top", scrollTop);
+		if (!menuIsOpen()) { 
+			lockMastheadToTop();
 		}
-	
-		var menuTop = parseInt($('.masthead').css("top"), 10);
 
-		if (scrollTop < menuTop) {
-			$('.menu__link').toggleClass('active');
-			$('#menu').toggleClass('active');
-			$('.masthead').toggleClass('menu-is-open');
-			$('.masthead').css("top", scrollTop);
+		if (menuIsOpen() && userScrollsAboveMenu()) {
+			toggleMenu();
+			lockMastheadToTop();
 		}
+		
+	});
+
+	$(".has-subnav").on('mouseenter mouseleave', function (e) {
+	    addClassIfSubMenuLeavesScreen($(this));
 	});
 
 
-	// Detects if a dropdown menu is going to go off the screen
+// Functions =================================================
 
-	$(".has-subnav").on('mouseenter mouseleave', function (e) {
-	    var elm = $('ul:first', this);
+
+	function toggleMenu(){
+		$('#menu').toggleClass('active');
+		$('.menu__link').toggleClass('active');
+		$('.masthead').toggleClass('menu-is-open');
+	};
+
+
+	function createDisclosureButtons() {
+		var $dropdownLink = $('.has-subnav > a');
+		var disclosureLink = "<a class=\"disclosure-button\" href=\"#\">+</a>";
+		$dropdownLink.after(disclosureLink);	
+	};
+
+
+	function toggleDisclosureButtonIcon(icon) {
+		if (icon.html()=="+") {
+			icon.html('–');
+		}else{
+			icon.html('+');
+		};
+	}
+
+	function menuIsOpen() {
+		return $('.menu-is-open').length > 0;
+	}
+
+	function lockMastheadToTop() {
+		var scrollTop = $(window).scrollTop();
+		$('.masthead').css("top", scrollTop);
+	};
+
+
+	function userScrollsAboveMenu() {
+		var scrollTop = $(window).scrollTop();
+		var menuTop = parseInt($('.masthead').css("top"), 10);
+		return scrollTop < menuTop;
+	}
+
+
+	function addClassIfSubMenuLeavesScreen(trigger) {
+		var elm = $('ul:first', trigger);
 	    var off = elm .offset();
 	    var l = off.left;
 	    var w = elm.width();
@@ -71,11 +86,11 @@ $(document).ready(function() {
 	    var isEntirelyVisible = (l+ w <= docW);
 
 	    if ( ! isEntirelyVisible ) {
-	        $(this).addClass('edge');
+	        trigger.addClass('edge');
 	    } else {
-	        $(this).removeClass('edge');
+	        trigger.removeClass('edge');
 	    }
-	});
+	}
 
 });
 

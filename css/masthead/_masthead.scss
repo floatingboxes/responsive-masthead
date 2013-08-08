@@ -156,7 +156,7 @@ $masthead-menu-link-hover-color:$black-4;
 
 
 	// Specific formatting for disclosure buttons on mobile nav
-	.disclosure {
+	.disclosure-button {
 		position:absolute;
 		top:0;
 		right:0;
@@ -255,7 +255,7 @@ $masthead-menu-link-hover-color:$black-4;
 			left: 0;
 		}
 
-		.disclosure {
+		.disclosure-button {
 			display:none;
 		}
 
