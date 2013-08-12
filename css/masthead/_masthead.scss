@@ -22,11 +22,16 @@ $masthead-menu-link-hover-color:$black-4;
 
 // containing block for the entire masthead
 .masthead {
-	position: absolute;
+	position: fixed;
 	min-height: em(60);
 	background-color: $masthead-background-color;
-	top:0;
 	width:100%;
+	top:0;
+	left:0;
+
+	&.absolute {
+		position: absolute;
+	}
 
 	// mobile-first positioning for the logo
 	.masthead__logo {
@@ -98,7 +103,7 @@ $masthead-menu-link-hover-color:$black-4;
 // When the menu block or a child menu have the class active, reveal them on mobile
 .menu.active, 
 .js .menu > ul ul.active {
-	max-height: 55em;
+	max-height: em(2000);
 }
 
 
