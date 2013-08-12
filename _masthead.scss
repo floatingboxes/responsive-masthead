@@ -1,3 +1,7 @@
+// Define a set of color variables
+// http://sachagreif.com/sass-color-variables/
+// =====================================
+
 $black-1: #202226;
 $black-2: #2F3338;
 $black-3: #3E4349;
@@ -5,42 +9,61 @@ $black-4: #4E535B;
 $black-5: #5D646D;
 $white: #FFFFFF;
 
+
+// Define a set of functional variables
+// =====================================
+
 $masthead-text-color:$white;
 $masthead-background-color:$black-2;
 $masthead-delimiter-color:$black-4;
 $masthead-menu-button-color:$black-3;
 $masthead-menu-link-hover-color:$black-4;
 
-.masthead {
-	background-color:$masthead-background-color;
-	position:relative;
-	min-height:em(60);
 
+// containing block for the entire masthead
+.masthead {
+	position: fixed;
+	min-height: em(60);
+	background-color: $masthead-background-color;
+	width:100%;
+	top:0;
+	left:0;
+
+	&.absolute {
+		position: absolute;
+	}
+
+	// mobile-first positioning for the logo
 	.masthead__logo {
 		max-width:em(200);
-		margin:auto;
+		margin:0;
 		padding:em(10) 0;
 
+		// removes excess space below image
 		a img {
 			display:block;
 		}
 
+		// tablet+ media query positioning for the logo
 		@include tablet-portrait-and-above {
-			margin:0;
 			max-width:em(250);
 		}
 	}
 }
 
+
+// continaing block for navigation menu
 .masthead__navigation {
 	position:relative;
 }
 
+
+// link that opens meny only appears on mobile
 .menu__link {
     position:absolute;
     display:block;
     top:em(-50,12);
-    left:em(10,12);
+    right:em(10,12);
 
     font-size:em(12);
     line-height:1;
@@ -53,16 +76,22 @@ $masthead-menu-link-hover-color:$black-4;
     border-radius:em(6,12);
 }
 
-.menu, .menu > ul ul {
-	clear: both;
+
+// When the menu block or any menu block transitions from
+// max hieght 0 to max height 55em, animate that transition
+.menu,
+.menu > ul ul {
 	@include transition(all 0.3s ease-in-out);
 }
 
+// by default, without javascript, do not show any sub-menus
 .menu > ul ul {
 	display:none;
 }
 
 
+// When javascript is available, hide the menu block and all child menus in the 
+// state on mobile
 .js .menu, 
 .js .menu > ul ul {
 	display:block;
@@ -70,29 +99,44 @@ $masthead-menu-link-hover-color:$black-4;
 	max-height: 0;
 }
 
+
+// When the menu block or a child menu have the class active, reveal them on mobile
 .menu.active, 
 .js .menu > ul ul.active {
-	max-height: 55em;
+	max-height: em(2000);
 }
 
+
+// Main menu block element; mobile first
 .menu {
+
+
+	// All lists inside menu block
 	ul {
 		margin:0;
 		padding:0;
 	}
 
+
+	// First level lists
 	> ul {
 		border-top: 1px solid $masthead-delimiter-color; 
 	}
 
+
+	// Childen of first level lists
 	> ul ul {
 		background-color:rgba(255,255,255,0.05);
 	}
 
+
+	// All list items in all lists
 	li {
 		position:relative;
 	}
 
+
+	// All links inside all list items in all lists
 	li a {
 		color: $masthead-text-color;
 		display: block;
@@ -109,11 +153,15 @@ $masthead-menu-link-hover-color:$black-4;
 		position: relative;
 	}
 
+
+	// Hover state for all links in all list items in all lists
 	li a:hover {
 		background-color:$masthead-menu-link-hover-color;
 	}
 
-	.disclosure {
+
+	// Specific formatting for disclosure buttons on mobile nav
+	.disclosure-button {
 		position:absolute;
 		top:0;
 		right:0;
@@ -126,63 +174,84 @@ $masthead-menu-link-hover-color:$black-4;
 }
 
 
+// media query for tablet+ breakpoint
 @include tablet-portrait-and-above {
-	.menu {
-		overflow: visible;
-	}
 
+
+	// Hide the unneccessary menu link now that the menu is always visible
 	.menu__link {
 	   display: none;
 	}
 
-	.js .menu, 
+
+	// Override the hidden state in mobile-first approach
+	.menu {
+		overflow: visible;
+	}
+
+
+	// Override the default 0 height and overflow from mobile-first approach 
+	.js .menu,
 	.js .menu > ul ul {
 		max-height: none;
 		overflow: visible;
-		background: none;
-
 	}
+
+	// Hide sub menus
 	.js .menu > ul ul {
-		background-color:$masthead-background-color;
-		display: none;
+		background-color:$masthead-background-color; // TODO: move this into a sepereate styling section?
+		display:none;
 	}
 
-	.js .menu > ul li:hover > ul {
-		display: block;
+	// Since we're only showing submenus with javascript anyway why use the psudo-class?
+	// progressive enhancement should make this work without the javascript requirement
+
+	.js .menu ul li:hover > ul {
+		display:block;
 	}
 
+	// Main menu block in tablet+ breakpoint
 	.menu {
 		position:absolute;
 		bottom:0;
 		right:0;
 
+		// All lists in menu
 		ul {
-			border: 0;
+			border: 0; // override borders from mobile-first
 		}
 
-		li.has-subnav > a:after {
-			content: none;
-		}
-
+		// Last link on all of the dropdown menus
 		li:last-child a {
-			border-bottom: none;
+			border-bottom: 0;
 		}
 
+		// Top-level links
 		> ul > li {
 			display: inline-block;
 			position: relative;
 			> a { border-bottom:0; }
 		}
 
+		// All child dropdown menus
 		> ul ul {
 			position: absolute;
 			top: 0;
 			left: em(200,16);
 			width: em(200,16);
+
+			li {
+				position: relative;
+			}
 		}
-		
-		> ul ul li {
-			position: relative;
+
+		// Links that have a child dropdown going off the screen
+		.edge {
+
+			> ul {
+				left:auto !important;
+				right:0 !important;
+			}
 		}
 
 		> ul ul.level-2 {
@@ -191,9 +260,11 @@ $masthead-menu-link-hover-color:$black-4;
 			left: 0;
 		}
 
-		.disclosure {
+		.disclosure-button {
 			display:none;
 		}
+
+
 	}
 
 

@@ -1,32 +1,97 @@
+
 $(document).ready(function() {
-	// $('body').addClass('js'); Modernizer will add the js class
-	var $menu = $('#menu'),
-		$menulink = $('.menu__link');
 
-	$menulink.click(function(e) {
+	createDisclosureButtons();
+
+	$('.menu__link').click(function(e) {
 		e.preventDefault();
-		$menulink.toggleClass('active');
-		$menu.toggleClass('active');
+		toggleMenu();
+		toggleMastheadPostion();
+	});
+	
+
+	$('.disclosure-button').click(function(e) {
+		e.preventDefault();
+		$(this).nextAll('ul').toggleClass('active');
+		toggleDisclosureButtonIcon($(this));
 	});
 
 
-	var $dropdownLink = $('.has-subnav > a'),
-		$disclosureLink = "<a class=\"disclosure\" href=\"#\">+</a>";
+	$(document).scroll(function() {
+		if (menuIsOpen() && userScrollsAboveMenu()) {
+			toggleMenu();
+			toggleMastheadPostion();
+		}
+		
+	});
 
-	$dropdownLink.after($disclosureLink);
+	$(".has-subnav").on('mouseenter mouseleave', function (e) {
+	    addClassIfSubMenuLeavesScreen($(this));
+	});
 
-	var $disclosure = $('.disclosure');
 
-	$disclosure.click(function(e) {
-		e.preventDefault();
-		var $this = $(this);
-		$this.toggleClass('active').nextAll('ul').toggleClass('active');
+// Functions =================================================
 
-		if ($this.html()=="+") {
-			$this.html('–');
+
+	function toggleMenu(){
+		$('#menu').toggleClass('active');
+		$('.menu__link').toggleClass('active');
+		$('.masthead').toggleClass('menu-is-open');
+	}
+
+	function toggleMastheadPostion() {
+		$('.masthead').toggleClass('absolute');
+
+		if ($('.masthead').hasClass('absolute')){
+			var scrollTop = $(window).scrollTop();
+			$('.masthead').css("top", scrollTop);
+		} else {
+			$('.masthead').css("top", 0);
+		}
+	}
+
+	function createDisclosureButtons() {
+		var $dropdownLink = $('.has-subnav > a');
+		var disclosureLink = "<a class=\"disclosure-button\" href=\"#\">+</a>";
+		$dropdownLink.after(disclosureLink);	
+	}
+
+
+	function toggleDisclosureButtonIcon(icon) {
+		if (icon.html()=="+") {
+			icon.html('–');
 		}else{
-			$this.html('+');
+			icon.html('+');
 		};
-	});
+	}
+
+	function menuIsOpen() {
+		return $('.menu-is-open').length > 0;
+	}
+
+
+	function userScrollsAboveMenu() {
+		var scrollTop = $(window).scrollTop();
+		var menuTop = parseInt($('.masthead').css("top"), 10);
+		return scrollTop < menuTop;
+	}
+
+
+	function addClassIfSubMenuLeavesScreen(trigger) {
+		var elm = $('ul:first', trigger);
+	    var off = elm .offset();
+	    var l = off.left;
+	    var w = elm.width();
+	    var docW = $("html").width();
+
+	    var isEntirelyVisible = (l+ w <= docW);
+
+	    if ( ! isEntirelyVisible ) {
+	        trigger.addClass('edge');
+	    } else {
+	        trigger.removeClass('edge');
+	    }
+	}
 
 });
+
