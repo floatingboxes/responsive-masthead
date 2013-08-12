@@ -33,10 +33,6 @@ $(document).ready(function() {
 // Functions =================================================
 
 
-	function changeMastheadToFixedPosition(){
-		$('.masthead').css("position", "fixed");
-	}
-
 	function toggleMenu(){
 		$('#menu').toggleClass('active');
 		$('.menu__link').toggleClass('active');
